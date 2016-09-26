@@ -54,6 +54,21 @@ jQuery(document).ready(function($) {
 			$("html, body").animate({ scrollTop: 0 }, 1000);
 				return false;
 		});
+
+		//scroll menu to bottom
+		$('a[href*=#]').click(function() {
+		     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+		         && location.hostname == this.hostname) {
+		             var $target = $(this.hash);
+		             $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
+		             if ($target.length) {
+		                 var targetOffset = $target.offset().top;
+		                 $('html,body').animate({scrollTop: targetOffset}, 1000);
+		                 return false;
+		            }
+		       }
+		});
+
     $('#post-slider').flexslider({
         // Primary Controls
         controlNav          : false,              //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
@@ -146,4 +161,9 @@ jQuery(document).ready(function($) {
 				type: 'image'
 				// other options
 			});
+
+
+
+
+
 });

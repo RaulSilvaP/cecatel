@@ -332,9 +332,12 @@ display: inline-block;
 }
 .lineBtn{background: transparent !important;color: #1976d2;border: 1px solid #1976d2;padding: 10px 20px;border-radius: 6px;margin: 15px 0 10px;display: inline-block;text-decoration: none !important;font-size: 14px;}
 .lineBtn:hover{
-	background: #1976d2 !important;
-	border: 1px solid #1976d2;
-	color: #fff;
+	
+background: #1976d2 !important;
+	
+border: 1px solid #1976d2;
+	
+color: #fff;
 }
 #banner{
 	width: 100%;
@@ -1169,7 +1172,8 @@ color: #222;
 	color:#fff;
 }
 .pricing-box-item.activeItem .pricing-heading h3 {
-	 color: #fff;
+	 
+color: #fff;
 }
 
 .pricing-box-item .pricing-heading h3 strong {
@@ -1687,3 +1691,20 @@ padding-top: 3px;
 }
 
  
+.list-unstyled.love li, 
+.list-unstyled.no-love li {
+  background: url('../img/visto_bueno.png') no-repeat;
+  padding:0 0 5% 45px;
+}
+
+/* ======= change the no-love image ========== */
+.list-unstyled.no-love li {
+  background: url('../img/visto_bueno.png') no-repeat;
+  padding-right: 30px;
+
+}
+
+.texto-blanco {
+	color: #FFF
+}
+
