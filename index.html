@@ -313,18 +313,18 @@
 									<p>Gracias por visitar nuestra web.</p>
 								  	
 		   <!-- Form itself -->
-          <form name="sentMessage" id="contactForm"  novalidate> 
+          <form name="sentMessage" id="contactForm" method="post" novalidate> 
 		 <div class="control-group">
                     <div class="controls">
-			<input type="text" class="form-control" 
-			   	   placeholder="Nombre completo" id="name" required
+			<input type="text" class="form-control" name="nombre"
+			   	   placeholder="Nombre completo" id="nonmbre" required
 			           data-validation-required-message="Ingrese su nombre" />
 			  <p class="help-block"></p>
 		   </div>
 	         </div> 	
                 <div class="control-group">
                   <div class="controls">
-			<input type="email" class="form-control" placeholder="Email" 
+			<input type="email" class="form-control" name="email" placeholder="Email" 
 			   	            id="email" required
 			   		   data-validation-required-message="Ingrese su correo electrónico" />
 		</div>
@@ -332,16 +332,17 @@
 			  
                <div class="control-group">
                  <div class="controls">
-				 <textarea rows="10" cols="100" class="form-control" 
-                       placeholder="Mensaje" id="message" required
+				 <textarea rows="10" cols="100" class="form-control" name="mensaje"
+                       placeholder="Mensaje" id="mensaje" required
 		       data-validation-required-message="Ingrese su mensaje" minlength="5" 
                        data-validation-minlength-message="Min 5 characters" 
                         maxlength="999" style="resize:none"></textarea>
 		</div>
                </div> 		 
 	     <div id="success"> </div> <!-- For success/fail messages -->
-	    <button type="submit" class="btn btn-primary pull-right">Enviar</button><br />
-          </form>
+	    <button type="submit" id="btn_enviar" class="btn btn-primary pull-right">Enviar</button><br />
+          </form> 
+          <div id="respuesta"></div>
 								</div>
 								<div class="col-md-6">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.5064271304195!2d-73.05935704863126!3d-36.83034568608547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQ5JzQ5LjMiUyA3M8KwMDMnMjUuOCJX!5e0!3m2!1ses-419!2ses!4v1474859389584" width="550" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -379,6 +380,7 @@
                         <li><a href="#politica">Política</a></li>
                         <li><a href="#valores">Nuestros valores</a></li>
                         <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="http://www.cecatel.cl/webmail">Webmail</a></li>
 					</ul>
 				</div>
 			</div>
@@ -451,6 +453,33 @@ $(document).ready(function() {
   $('#quote-carousel').carousel({
     pause: true, interval: 10000,
   });
+
+  //envia el formulario de contacto
+
+ $("#btn_enviar").click(function(){
+ var url = "process.php"; // El script a dónde se realizará la petición.
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#contactForm").serialize(), // Adjuntar los campos del formulario enviado.
+           success: function(data)
+           {
+               $("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+               $("#contactForm")[0].reset();
+//               ("#nombre").val("");
+//               ("#email").val("");
+//               ("#mensaje").val("");
+           }
+         });
+
+    return false; // Evitar ejecutar el submit del formulario.
+ });
+
+
+
+
+
+
 });
 </script>
 </body>
